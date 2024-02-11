@@ -18,6 +18,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        modules: qtcore5compat
 
       - name: ccache
         uses: hendrikmuhs/ccache-action@v1.2

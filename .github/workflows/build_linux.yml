@@ -28,7 +28,7 @@ jobs:
         uses: jurplel/install-qt-action@v3
         with:
           version: 6.6.1
-          modules: qt5compat
+          modules: qt5compat qtmultimedia
 
       - name: Install other prerequisites
         run: |

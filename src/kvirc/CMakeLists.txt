@@ -313,10 +313,14 @@ if(APPLE)
 	set(plugin_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Plugins)
 	set(qtconf_dest_dir ${CMAKE_INSTALL_PREFIX}/Contents/Resources)
 	#fixme dirty hack
-	set(QT_PLUGINS_DIR "${Qt5Widgets_DIR}/../../../plugins")
-	set(QT_LIBRARY_DIR "${Qt5Widgets_DIR}/../../")
+
+	get_target_property(QT_LIBRARY_DIR Qt${QT_VERSION_MAJOR}::Core LOCATION)
 	get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
-	get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
+	#MESSAGE(STATUS "Qt Library dir is ${QT_LIBRARY_DIR}")
+	get_target_property(QT_PLUGINS_DIR Qt${QT_VERSION_MAJOR}::QJpegPlugin LOCATION)
+	get_filename_component(QT_PLUGINS_DIR ${QT_PLUGINS_DIR} PATH)
+	get_filename_component(QT_PLUGINS_DIR "${QT_PLUGINS_DIR}/.." ABSOLUTE)
+	#MESSAGE(STATUS "Qt plugins dir is ${QT_PLUGINS_DIR}")
 
     # qt5: audio, iconengines, imageformats, mediaservice, platforms, sqldrivers
     install(DIRECTORY "${QT_PLUGINS_DIR}/" DESTINATION ${plugin_dest_dir} COMPONENT Runtime

@@ -1,8 +1,8 @@
 # CMakeLists.txt for src/modules/zzz_afterlastmodule
 if(APPLE)
-	set(QT_LIBRARY_DIR "${Qt5Widgets_DIR}/../../")
+	get_target_property(QT_LIBRARY_DIR Qt${QT_VERSION_MAJOR}::Core LOCATION)
 	get_filename_component(QT_LIBRARY_DIR ${QT_LIBRARY_DIR} PATH)
-	get_filename_component(QT_LIBRARY_DIR "${QT_LIBRARY_DIR}/.." ABSOLUTE)
+	#MESSAGE(STATUS "Qt Library dir is ${QT_LIBRARY_DIR}")
 
 	install(CODE "
 	    file(GLOB_RECURSE KVIRC_INSTALLED_MODULES
